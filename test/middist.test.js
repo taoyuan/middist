@@ -1,7 +1,9 @@
 "use strict";
 
-var middist = require('../lib/middist');
 var t = require('chai').assert;
+var Emitter = require('events').EventEmitter;
+var middist = require('../lib/middist');
+
 
 describe('app, middleware manager', function () {
     var app, data;
@@ -179,6 +181,19 @@ describe('app, middleware manager', function () {
                 .handle('test', data, function(err,data) {
                     t.equal(data.count, 1);
                 });
+        });
+
+        it('should emit parent error for unhandled error', function (done) {
+            var emitter = new Emitter;
+            emitter.on('error', function (err) {
+                t.equal(err.message, 'boom');
+                done();
+            });
+            app = middist(emitter);
+            app.use(function () {
+                throw new Error('boom');
+            });
+            app.handle(data);
         });
     });
 });
