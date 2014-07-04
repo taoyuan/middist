@@ -2,13 +2,14 @@
 
 var t = require('chai').assert;
 var Emitter = require('events').EventEmitter;
-var middist = require('../lib/middist');
+var Middist = require('../lib/middist');
 
 
 describe('app, middleware manager', function () {
     var app, data;
+
     beforeEach(function () {
-        app = middist();
+        app = new Middist();
         data = {};
     });
 
@@ -65,7 +66,7 @@ describe('app, middleware manager', function () {
         it('should handle modifing the response', function () {
             app
                 .use('test', transformMiddleware)
-                .handle('test', data, function(err, data) {
+                .handle('test', data, function (err, data) {
                     t.equal(data.test, 'test');
                 });
         });
@@ -81,7 +82,7 @@ describe('app, middleware manager', function () {
         it('should handle exceptions', function() {
             app
                 .use(exceptionMiddleware)
-                .handle('all', data, function(err, data) {
+                .handle('all', data, function (err, data) {
                     t.equal(err, 'oups !');
                 });
         });
@@ -91,7 +92,7 @@ describe('app, middleware manager', function () {
                 .use(incMiddleware)
                 .use(incMiddleware)
                 .use(incMiddleware)
-                .handle('', data, function(err, data) {
+                .handle('', data, function (err, data) {
                     t.equal(data.count, 3);
                 });
         });
@@ -100,7 +101,7 @@ describe('app, middleware manager', function () {
             app
                 .use(endMiddleware)
                 .use(transformMiddleware)
-                .handle('', data, function(err, data) {
+                .handle('', data, function (err, data) {
                     t.notOk(data.test);
                 });
         });
@@ -110,7 +111,7 @@ describe('app, middleware manager', function () {
                 .use(incMiddleware)
                 .handle('', data);
             app
-                .handle('', data, function(err, data) {
+                .handle('', data, function (err, data) {
                     t.equal(data.count, 2);
                 });
         });
@@ -120,7 +121,7 @@ describe('app, middleware manager', function () {
                 .use(['test', 'test2'], incMiddleware)
                 .handle('test', data);
             app
-                .handle('test2', data, function(err, data) {
+                .handle('test2', data, function (err, data) {
                     t.equal(data.count, 2);
                 });
         });
@@ -128,7 +129,7 @@ describe('app, middleware manager', function () {
         it('should handle registering multiple middlewares at once', function() {
             app
                 .use('test', incMiddleware, incMiddleware)
-                .handle('test', data, function(err, data) {
+                .handle('test', data, function (err, data) {
                     t.equal(data.count, 2);
                 });
         });
@@ -138,7 +139,7 @@ describe('app, middleware manager', function () {
                 .use('test', exceptionMiddleware)
                 .use('test', errorHandlingMiddleware)
                 .use('test', transformMiddleware)
-                .handle('test', data, function(err, data) {
+                .handle('test', data, function (err, data) {
                     t.equal(err, 'error handled');
                     t.notOk(data.test);
                 });
@@ -148,7 +149,7 @@ describe('app, middleware manager', function () {
             app
                 .use('test', transformMiddleware)
                 .use('test', errorHandlingMiddleware)
-                .handle('test', data, function(err, data) {
+                .handle('test', data, function (err, data) {
                     t.notOk(err);
                 });
         });
@@ -158,7 +159,7 @@ describe('app, middleware manager', function () {
                 .use('test', exceptionMiddleware)
                 .use('test', errorHandlingMiddleware)
                 .use('test', anotherErrorHandlingMiddleware)
-                .handle('test', data, function(err, data) {
+                .handle('test', data, function (err, data) {
                     t.equal(err, 'error also handled');
                 });
         });
@@ -168,7 +169,7 @@ describe('app, middleware manager', function () {
                 .use('test', exceptionMiddleware)
                 .use('test', ignoreErrorHandler)
                 .use('test', transformMiddleware)
-                .handle('test', data, function(err, data) {
+                .handle('test', data, function (err, data) {
                     t.notOk(err);
                     t.equal(data.test, 'test');
                 });
@@ -178,7 +179,7 @@ describe('app, middleware manager', function () {
             app
                 .use('test', incMiddleware)
                 .use('testSomethingElse', incMiddleware)
-                .handle('test', data, function(err,data) {
+                .handle('test', data, function (err, data) {
                     t.equal(data.count, 1);
                 });
         });
@@ -189,7 +190,7 @@ describe('app, middleware manager', function () {
                 t.equal(err.message, 'boom');
                 done();
             });
-            app = middist(emitter);
+            app = new Middist(emitter);
             app.use(function () {
                 throw new Error('boom');
             });
