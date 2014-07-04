@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/taoyuan/middist.svg?theme=shields.io)](https://david-dm.org/taoyuan/middist)
 [![devDependency Status](https://david-dm.org/taoyuan/middist/dev-status.svg?theme=shields.io)](https://david-dm.org/taoyuan/middist#info=devDependencies)
 
-A generic middleware manager, inspired by Connect and [middlebot](github.com/yanhick/middlebot).
+> A generic middleware manager, inspired by Connect and [middlebot](github.com/yanhick/middlebot).
 
 ## Install
 
