@@ -1,0 +1,27 @@
+{
+  "name": "middist",
+  "version": "0.0.1",
+  "description": "Generic middleware manager.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taoyuan/middist.git"
+  },
+  "keywords": [
+    "generic",
+    "middleware"
+  ],
+  "author": "Tao Yuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taoyuan/middist/issues"
+  },
+  "homepage": "https://github.com/taoyuan/middist",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.20.1"
+  }
+}
