@@ -97,12 +97,13 @@ describe('app, middleware manager', function () {
                 });
         });
 
-        it('should end middleware execution', function () {
+        it('should end middleware execution', function (done) {
             app
                 .use(endMiddleware)
                 .use(transformMiddleware)
                 .handle('', data, function (err, data) {
                     t.notOk(data.test);
+                    done();
                 });
         });
 
