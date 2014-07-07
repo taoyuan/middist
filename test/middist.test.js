@@ -2,14 +2,14 @@
 
 var t = require('chai').assert;
 var Emitter = require('events').EventEmitter;
-var Middist = require('../lib/middist');
+var middist = require('../lib/middist');
 
 
 describe('app, middleware manager', function () {
     var app, data;
 
     beforeEach(function () {
-        app = new Middist();
+        app = middist();
         data = {};
     });
 
@@ -185,17 +185,17 @@ describe('app, middleware manager', function () {
                 });
         });
 
-        it('should emit parent error for unhandled error', function (done) {
-            var emitter = new Emitter;
-            emitter.on('error', function (err) {
-                t.equal(err.message, 'boom');
+        it('should can use another middist', function (done) {
+            app = middist();
+            var anotherApp = middist();
+            anotherApp.use(function (data) {
+                data.foo = 'bar';
+            });
+            app.use(anotherApp);
+            app.handle(data, function (err, data) {
+                t.propertyVal(data, 'foo', 'bar');
                 done();
-            });
-            app = new Middist(emitter);
-            app.use(function () {
-                throw new Error('boom');
-            });
-            app.handle(data);
+            })
         });
     });
 });
