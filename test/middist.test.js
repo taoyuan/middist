@@ -197,6 +197,14 @@ describe('app, middleware manager', function () {
                 done();
             })
         });
+
+        it.only('should throw error for unhandled error', function () {
+            app = middist();
+            app.use(function () {
+                throw new Error('boom');
+            });
+            t.throws(app.handle.bind(app, data));
+        });
     });
 });
 
