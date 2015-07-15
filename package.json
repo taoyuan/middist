@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/taoyuan/middist",
   "devDependencies": {
-    "chai": "^1.9.1",
-    "mocha": "^1.20.1"
+    "chai": "^3.0.0",
+    "mocha": "^2.2.5",
+    "plando": "^0.1.3"
   }
 }

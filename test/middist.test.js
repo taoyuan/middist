@@ -1,8 +1,7 @@
 "use strict";
 
 var t = require('chai').assert;
-var Emitter = require('events').EventEmitter;
-var middist = require('../lib/middist');
+var middist = require('../');
 
 
 describe('app, middleware manager', function () {
@@ -198,7 +197,7 @@ describe('app, middleware manager', function () {
             })
         });
 
-        it.only('should throw error for unhandled error', function () {
+        it('should throw error for unhandled error', function () {
             app = middist();
             app.use(function () {
                 throw new Error('boom');
