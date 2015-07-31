@@ -85,5 +85,5 @@ MIT
 [travis-url]: https://travis-ci.org/taoyuan/middist
 [daviddm-image]: https://david-dm.org/taoyuan/middist.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/taoyuan/middist
-[coveralls-image]: https://img.shields.io/coveralls/taoyuan/middist/master.svg
+[coveralls-image]: https://coveralls.io/repos/taoyuan/middist/badge.svg
 [coveralls-url]: https://coveralls.io/r/taoyuan/middist?branch=master
