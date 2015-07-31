@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = require('./lib/middist');
+module.exports = require('./lib/router');
