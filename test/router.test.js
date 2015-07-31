@@ -194,7 +194,7 @@ describe('router/middleware manager', function () {
       router.handle(data, function (err, data) {
         t.propertyVal(data, 'foo', 'bar');
         done();
-      })
+      });
     });
 
     it('should throw error for unhandled error', function () {

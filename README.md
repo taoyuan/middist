@@ -1,22 +1,25 @@
 # middist
 
-[![Build Status](https://travis-ci.org/taoyuan/middist.svg?branch=master)](https://travis-ci.org/taoyuan/middist)
-[![Dependency Status](https://david-dm.org/taoyuan/middist.svg?theme=shields.io)](https://david-dm.org/taoyuan/middist)
-[![devDependency Status](https://david-dm.org/taoyuan/middist/dev-status.svg?theme=shields.io)](https://david-dm.org/taoyuan/middist#info=devDependencies)
+[![NPM version][npm-image]][npm-url] 
+[![Build Status][circleci-image]][circleci-url] 
+[![Dependency Status][daviddm-image]][daviddm-url]
+[![Test Coverage][coveralls-image]][coveralls-url]
 
 > A generic middleware manager, inspired by [Connect](https://github.com/senchalabs/connect) and [middlebot](https://github.com/yanhick/middlebot).
 
 ## Install
 
 ```sh
-npm install middist
+npm install middist --save
 ```
 
 ## Use
 
 ```js
   // Instantiate middist.
-  var app = require('middist')();
+  var Router = require('middist');
+  
+  var router = Router();
 
   // Middleware example.
   var middleware = function(ctx, next) {
@@ -44,13 +47,13 @@ npm install middist
   }
 
   // Register middleware to be called when ‘myMiddlewares’ is handled.
-  app.use('myMiddlewares', middleware);
+  router.use('myMiddlewares', middleware);
 
   // Middleware can be registered for mutiple types at once.
-  app.use(['myMiddleWares, myOtherMiddlewares'], middleware);
+  router.use(['myMiddleWares, myOtherMiddlewares'], middleware);
 
   // Multiple middlewares can be registered at once.
-  app.use('myMiddleWares', middleware, anotherMiddleware);
+  router.use('myMiddleWares', middleware, anotherMiddleware);
 
   // Context objects.
   var ctx = {};
@@ -63,7 +66,7 @@ npm install middist
   }
 
   // Handle all middlewares registered for ‘myMiddleWares’ with req and res.
-  app.handle('myMiddleWares', ctx, done);
+  router.handle('myMiddleWares', ctx, done);
 ```
 
 ## Test
@@ -75,3 +78,12 @@ npm test
 ## License
 
 MIT
+
+[npm-image]: https://badge.fury.io/js/middist.svg
+[npm-url]: https://npmjs.org/package/middist
+[circleci-image]: https://circleci.com/gh/taoyuan/middist.svg?style=shield
+[circleci-url]: https://circleci.com/gh/taoyuan/middist
+[daviddm-image]: https://david-dm.org/taoyuan/middist.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/taoyuan/middist
+[coveralls-image]: https://img.shields.io/coveralls/taoyuan/middist/master.svg
+[coveralls-url]: https://coveralls.io/r/taoyuan/middist?branch=master

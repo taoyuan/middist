@@ -4,7 +4,8 @@
   "description": "A generic middleware manager.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "prepublish": "gulp prepublish",
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,17 @@
   "homepage": "https://github.com/taoyuan/middist",
   "devDependencies": {
     "chai": "^3.2.0",
+    "istanbul": "^0.3.17",
     "mocha": "^2.2.5",
-    "plando": "^0.1.4"
+    "plando": "^0.1.4",
+    "gulp": "^3.6.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^0.9.0",
+    "gulp-jshint": "^1.5.3",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-nsp": "^0.4.5",
+    "jshint-stylish": "^1.0.0",
+    "gulp-coveralls": "^0.1.0"
   }
 }
