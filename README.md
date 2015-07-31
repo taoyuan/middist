@@ -1,7 +1,7 @@
 # middist
 
 [![NPM version][npm-image]][npm-url] 
-[![Build Status][circleci-image]][circleci-url] 
+[![Build Status][travis-image]][travis-url] 
 [![Dependency Status][daviddm-image]][daviddm-url]
 [![Test Coverage][coveralls-image]][coveralls-url]
 
@@ -81,8 +81,8 @@ MIT
 
 [npm-image]: https://badge.fury.io/js/middist.svg
 [npm-url]: https://npmjs.org/package/middist
-[circleci-image]: https://circleci.com/gh/taoyuan/middist.svg?style=shield
-[circleci-url]: https://circleci.com/gh/taoyuan/middist
+[travis-image]: https://travis-ci.org/taoyuan/middist.svg?style=shield
+[travis-url]: https://travis-ci.org/taoyuan/middist
 [daviddm-image]: https://david-dm.org/taoyuan/middist.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/taoyuan/middist
 [coveralls-image]: https://img.shields.io/coveralls/taoyuan/middist/master.svg
