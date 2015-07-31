@@ -35,5 +35,9 @@
     "gulp-nsp": "^0.4.5",
     "jshint-stylish": "^2.0.1",
     "gulp-coveralls": "^0.1.4"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "lodash.flatten": "^3.0.2"
   }
 }

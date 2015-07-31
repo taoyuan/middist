@@ -204,6 +204,13 @@ describe('router/middleware manager', function () {
       });
       t.throws(router.handle.bind(router, data));
     });
+
+    it('should call the filter callback', function () {
+      router = middist(filterMiddleware, transformMiddleware);
+      router.handle(data, function (err, data) {
+        t.equal(data.test, 'testfilter');
+      });
+    });
   });
 });
 
@@ -244,4 +251,10 @@ function anotherErrorHandlingMiddleware(err, data, next) {
 
 function ignoreErrorHandler(err, data, next) {
   next();
+}
+
+function filterMiddleware(data, next) {
+  next(function (err, data) {
+    data.test = data.test + 'filter';
+  });
 }
