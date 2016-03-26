@@ -54,7 +54,7 @@ describe('router/handle', function () {
 
   it('should handle function stack', function (done) {
 
-    var p = pd.plan(2, done);
+    var p = pd(2, done);
 
     var operators = [plus, minus, multiply, divide];
 
@@ -65,7 +65,7 @@ describe('router/handle', function () {
     handle(operators, data, function (err) {
       t.notOk(err);
       t.deepEqual(data.result, [10 + 5, 10 - 5, 10 * 5, 10 / 5]);
-      p.check();
+      p();
     });
 
     var data2 = {
@@ -73,7 +73,7 @@ describe('router/handle', function () {
     };
     handle(operators, data2, function (err) {
       p.ok(err);
-      p.check();
+      p();
     });
   });
 });
