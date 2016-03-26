@@ -106,6 +106,16 @@ describe('router/middleware manager', function () {
         });
     });
 
+    it('should end sync middleware execution', function (done) {
+      router
+        .use(endMiddlewareSync)
+        .use(transformMiddleware)
+        .handle('', data, function (err, data) {
+          t.notOk(data.test);
+          done();
+        });
+    });
+
     it('should handle multiple handling calls', function () {
       router
         .use(incMiddleware)
@@ -219,6 +229,10 @@ function testMiddleWare(data, next) {
 }
 
 function endMiddleware(data, next) {
+  data.end();
+}
+
+function endMiddlewareSync(data) {
   data.end();
 }
 
